@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Unattended Virtualbox VM Setup using cloud-init"
+title:  "Automated Virtualbox VM Setup using cloud-init"
 date:   2019-03-10
 categories: start virtualbox provision
 ---
