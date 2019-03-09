@@ -57,7 +57,7 @@ manage_etc_hosts: true
 runcmd:
   - 'curl -Os http://<host ip address>:8000/playbook.tar.gz >> /tmp/cmd.txt 2>&1' 
   - 'tar -xzvf playbook.tar.gz >> /tmp/cmd.txt 2>&1'
-  - 'ansible-playbook -c local -vvvv -i jboss/hosts jboss/site.yml > /tmp/ansible-output.txt 2>&1'
+  - 'ansible-playbook -c local -vvvv -i jboss-standalone/hosts jboss-standalone/site.yml > /tmp/ansible-output.txt 2>&1'
 ```
 Keep in mind that the commands listed above will be executed as root user, from directory `/`.
 
@@ -83,7 +83,26 @@ $ ls -ltr seed.iso
 
 ```
 ### Prepare ansible scripts
-As an example, download the jboss playbook from https://github.com/ansible/ansible-examples/tree/master/jboss-standalone, then compress the directory as playbook.tar.gz. In the same directory, fire up python simple HTTP server.
+As an example, download the jboss playbook from [jboss-standalone] Ansible example.
+Update hosts and site YAML file:
+hosts file:
+```
+[jboss]
+localhost
+```
+
+site.yml:
+```
+---
+# This playbook deploys a simple standalone JBoss server.
+
+- hosts: jboss
+
+  roles:
+    - jboss-standalone
+```
+
+Then compress the directory as playbook.tar.gz. In the same directory, fire up python simple HTTP server.
 ```
 $ python -m SimpleHTTPServer
 Serving HTTP on 0.0.0.0 port 8000 ...
@@ -106,3 +125,4 @@ The result of ansible execution should be seen from `/tmp/ansible-output.txt` lo
 
 [blog page]: https://medium.com/@mvuksano/automated-provisioning-of-virtual-machines-for-development-8a543e435f44
 [centos checksum]: https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.1810?action=show&redirect=Manuals%2FReleaseNotes%2FCentOS7#head-216cf28780660383fed5b3266f31ef11ea95d18f
+[jboss-standalone]: https://github.com/ansible/ansible-examples/tree/master/jboss-standalone.
