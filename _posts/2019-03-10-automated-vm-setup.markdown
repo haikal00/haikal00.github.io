@@ -147,3 +147,5 @@ Upon booting, press Tab to get to the boot prompt. Then add boot parameters for 
 [centos checksum]: https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.1810?action=show&redirect=Manuals%2FReleaseNotes%2FCentOS7#head-216cf28780660383fed5b3266f31ef11ea95d18f
 [jboss-standalone]: https://github.com/ansible/ansible-examples/tree/master/jboss-standalone.
 [this kickstart]: /files/ks.cfg
+[devopstribe blog post]: https://devopstribe.it/2014/07/23/install-linux-centos-7-with-kickstart-on-virtualbox/
+
