@@ -1,10 +1,11 @@
 ---
 layout: post
-title:  "Automated Virtualbox VM Setup using cloud-init"
+title:  "Automated Virtualbox VM Setup"
 date:   2019-03-10
 categories: start virtualbox provision
+videoName: kickstart.mp4
 ---
-
+## Automated Virtualbox VM Setup with cloud-init
 This page is mainly following a [blog page] by Marko Vuksanovic, with slight modification.
 
 One of interesting alternative to automate Virtualbox VM setup is by making use of cloud-init.
@@ -122,7 +123,27 @@ Then start the VM. Depending on the VM specification and the internet connection
 
 The result of ansible execution should be seen from `/tmp/ansible-output.txt` log file, and for cloud init, the log file is `/var/log/cloud-init.log`.
 
+## Alternative: using kickstart
+
+Other alternative is posted in [devopstribe blog post], which use linux kickstart.
+Provided that a kickstart and an ISO linux installer file already in place, this approach can be done quickly.
+
+A kickstart file, `/root/anaconda-ks.cfg`, is generated after a CentOS installation finished. For this exercise, I use [this kickstart] file as a sample. 
+
+First step, go to the directory where the kickstart file is located, then fire up HTTP server, to serve the kickstart file.
+```
+$ python -m SimpleHTTPServer
+Serving HTTP on 0.0.0.0 port 8000 ...
+```
+
+On separate terminal, test the url: `curl -O http://<Virtualbox Host-only ip address>:8000/ks.cfg`
+
+Next create a VM in Virtualbox, create Disk, attach the minimal CentOS ISO file, and set the networking to Host only.
+Upon booting, press Tab to get to the boot prompt. Then add boot parameters for kickstart address: `ksdevice=enp0s3 ip=192.168.99.101 netmask=255.255.255.0 ks=http://192.168.99.1:8000/ks.cfg`.
+
+{% include videoPlayer.html id=page.videoName %}
 
 [blog page]: https://medium.com/@mvuksano/automated-provisioning-of-virtual-machines-for-development-8a543e435f44
 [centos checksum]: https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.1810?action=show&redirect=Manuals%2FReleaseNotes%2FCentOS7#head-216cf28780660383fed5b3266f31ef11ea95d18f
 [jboss-standalone]: https://github.com/ansible/ansible-examples/tree/master/jboss-standalone.
+[this kickstart]: /files/ks.cfg
