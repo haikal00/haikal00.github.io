@@ -143,6 +143,11 @@ Upon booting, press Tab to get to the boot prompt. Then add boot parameters for 
 
 {% include videoPlayer.html id=page.videoName %}
 
+## VirtualBox unattended installation
+If you don't like the above two alternatives, another option to check is to use VirtualBox unattended installation, as posted on this [page] (https://kifarunix.com/how-to-automate-virtual-machine-installation-on-virtualbox/ ). This is built-in command from VirtualBox.
+
+When I tried this approach, my VirtualBox installation complain that some preseed configuration files are missing. Googled around, and I found that these file can be downloaded from [here](https://www.virtualbox.org/svn/vbox/trunk/src/VBox/Main/UnattendedTemplates/).
+
 [blog page]: https://medium.com/@mvuksano/automated-provisioning-of-virtual-machines-for-development-8a543e435f44
 [centos checksum]: https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.1810?action=show&redirect=Manuals%2FReleaseNotes%2FCentOS7#head-216cf28780660383fed5b3266f31ef11ea95d18f
 [jboss-standalone]: https://github.com/ansible/ansible-examples/tree/master/jboss-standalone.
