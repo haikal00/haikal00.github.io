@@ -150,7 +150,7 @@ When I tried this approach, my VirtualBox installation complain that some presee
 
 [blog page]: https://medium.com/@mvuksano/automated-provisioning-of-virtual-machines-for-development-8a543e435f44
 [centos checksum]: https://wiki.centos.org/Manuals/ReleaseNotes/CentOS7.1810?action=show&redirect=Manuals%2FReleaseNotes%2FCentOS7#head-216cf28780660383fed5b3266f31ef11ea95d18f
-[jboss-standalone]: https://github.com/ansible/ansible-examples/tree/master/jboss-standalone.
+[jboss-standalone]: https://github.com/ansible/ansible-examples/tree/master/jboss-standalone
 [this kickstart]: /files/ks.cfg
 [devopstribe blog post]: https://devopstribe.it/2014/07/23/install-linux-centos-7-with-kickstart-on-virtualbox/
 
